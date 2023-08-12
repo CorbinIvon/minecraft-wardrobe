@@ -1,6 +1,6 @@
 import PIL.Image
-# texture = 'resources/UV-Helper'
-texture = 'resources/steve_template'
+texture = 'resources/UV-Helper'
+# texture = 'resources/steve_template'
 # texture = 'resources/Corbin-Engineer01'
 tx = PIL.Image.open(texture+'.png').size[0]
 ty = PIL.Image.open(texture+'.png').size[1]
@@ -36,8 +36,8 @@ class head:
   v_scale = uv_size[1] / 64
 
   uvs = [
-      ((1 * u_scale) + x_offset, (1 * v_scale) + y_offset),
-      ((0 * u_scale) + x_offset, (1 * v_scale) + y_offset),
-      ((1 * u_scale) + x_offset, (0 * v_scale) + y_offset),
-      ((0 * u_scale) + x_offset, (0 * v_scale) + y_offset), # Front face
+    ((1 * u_scale) + x_offset, (1 * v_scale) + y_offset),
+    ((0 * u_scale) + x_offset, (1 * v_scale) + y_offset),
+    ((1 * u_scale) + x_offset, (0 * v_scale) + y_offset),
+    ((0 * u_scale) + x_offset, (0 * v_scale) + y_offset), # Front face
   ]
