@@ -28,7 +28,7 @@ player_texture = load_texture(texture)
 
 # Head
 head = CustomCube(
-  position=(0, scale_body[1]/2 + head.size_z/2, 0),
+  position=(0, scale_body[1]/2 + head.volume_z/2, 0),
   texture=player_texture,
 )
 
