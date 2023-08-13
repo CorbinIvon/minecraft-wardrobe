@@ -1,9 +1,8 @@
 from ursina import *
 
-app = Ursina()
-
-textures = ['resources/UV-Helper', 'resources/steve_template', 'resources/Corbin-Engineer01']
-texture = textures[1]
+texture_index = 0
+textures = ['resources/steve_template']
+texture = textures[texture_index]
 
 def create_plane(texture_scale = (64, 64), texture_position = (0, 0)):
   vertices = [Vec3(-0.5, -0.5, 0), Vec3(0.5, -0.5, 0), Vec3(0.5, 0.5, 0), Vec3(-0.5, 0.5, 0)]
@@ -70,6 +69,59 @@ head = [
     texture=texture)
 ]
 for planes in head:
+  planes.y += 10
+hat = [
+  # Front face
+  Entity(model=create_plane(
+    texture_scale = (8, 8),
+    texture_position = (32+8, 8)),
+    scale=(8.5, 8.5),
+    position=(0, 0, 4.25),
+    rotation=(0, 180, 0),
+    texture=texture),
+  # Back face
+  Entity(model=create_plane(
+    texture_scale = (8, 8),
+    texture_position = (32+24, 8)),
+    scale=(8.5, 8.5),
+    position=(0, 0, -4.25),
+    rotation=(0, 0, 0),
+    texture=texture),
+  # Left face
+  Entity(model=create_plane(
+    texture_scale = (8, 8),
+    texture_position = (32+16, 8)),
+    scale=(8.5, 8.5),
+    position=(-4.25, 0, 0),
+    rotation=(0, 90, 0),
+    texture=texture),
+  # Right face
+  Entity(model=create_plane(
+    texture_scale = (8, 8),
+    texture_position = (32+0, 8)),
+    scale=(8.5, 8.5),
+    position=(4.25, 0, 0),
+    rotation=(0, -90, 0),
+    texture=texture),
+  # Top face
+  Entity(model=create_plane(
+    texture_scale = (8, 8),
+    texture_position = (32+8, 0)),
+    scale=(8.5, 8.5),
+    position=(0, 4.25, 0),
+    rotation=(90, 180, 0),
+    texture=texture),
+  # Bottom face
+  # FIXME: Bottom face UV is flipped on the X axis.
+  Entity(model=create_plane(
+    texture_scale = (8, 8),
+    texture_position = (32+16, 0)),
+    scale=(8.5, 8.5),
+    position=(0, -4.25, 0),
+    rotation=(-90, 0, 0),
+    texture=texture)
+]
+for planes in hat:
   planes.y += 10
 body = [
   # Front face
@@ -331,12 +383,3 @@ right_leg = [
 for planes in right_leg:
   planes.x += 2
   planes.y -= 12
-
-editor_camera = EditorCamera()
-editor_camera.rotation = (0, 180, 0)  # Rotate the camera 180 degrees around the Y-axis
-
-# Disable FPS Counter
-window.fps_counter.enabled = False
-
-# Run the application
-app.run()
