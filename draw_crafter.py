@@ -3,7 +3,7 @@ from ursina import *
 # Map easier with this: https://pixspy.com/
 
 texture_index = 0
-textures = ['resources/steve_template']
+textures = ['resources/Corbin-Engineer01.png']
 texture = textures[texture_index]
 
 def create_plane(texture_scale = (64, 64), texture_position = (0, 0)):
@@ -228,37 +228,37 @@ right_arm = [
 for planes in right_arm:
   planes.x += 6
 left_arm = [
-  # Front face
+  # Front face became Back face now
   Entity(model=create_plane(
     texture_scale = (4, 12),
     texture_position = (44, 20)),
     scale=(4, 12),
-    position=(0, 0, 2),
-    rotation=(0, 180, 0),
+    position=(0, 0, -2),
+    rotation=(0, 0, 0),
     texture=texture),
-  # Back face
+  # Back face became Front face
   Entity(model=create_plane(
     texture_scale = (4, 12),
     texture_position = (52, 20)),
     scale=(4, 12),
-    position=(0, 0, -2),
-    rotation=(0, 0, 0),
+    position=(0, 0, 2),
+    rotation=(0, 180, 0),
     texture=texture),
-  # Left face
+  # Left face became right face
   Entity(model=create_plane(
     texture_scale = (4, 12),
     texture_position = (48, 20)),
     scale=(4, 12),
-    position=(-2, 0, 0),
-    rotation=(0, 90, 0),
+    position=(2, 0, 0),
+    rotation=(0, -90, 0),
     texture=texture),
-  # Right face
+  # Right face became left face
   Entity(model=create_plane(
     texture_scale = (4, 12),
     texture_position = (40, 20)),
     scale=(4, 12),
-    position=(2, 0, 0),
-    rotation=(0, -90, 0),
+    position=(-2, 0, 0),
+    rotation=(0, 90, 0),
     texture=texture),
   # Top face
   Entity(model=create_plane(
@@ -266,7 +266,7 @@ left_arm = [
     texture_position = (44, 16)),
     scale=(4, 4),
     position=(0, 6, 0),
-    rotation=(90, 180, 0),
+    rotation=(90, 0, 0),
     texture=texture),
   # Bottom face
   Entity(model=create_plane(
