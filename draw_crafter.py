@@ -1,9 +1,10 @@
 from ursina import *
+import steve_texture_map
 
 # Map easier with this: https://pixspy.com/
 
 texture_index = 0
-textures = ['resources/Corbin-Engineer01.png']
+textures = ['resources/TextureGridAssistant', 'resources/Corbin-Engineer01.png']
 texture = textures[texture_index]
 
 def create_plane(texture_scale = (64, 64), texture_position = (0, 0)):
@@ -19,369 +20,45 @@ def create_plane(texture_scale = (64, 64), texture_position = (0, 0)):
   triangles = [(0, 1, 2), (0, 2, 3)]
   return Mesh(vertices=vertices, uvs=uvs, triangles=triangles)
 
-head = [
-  # Front face
-  Entity(model=create_plane(
-    texture_scale = (8, 8),
-    texture_position = (8, 8)),
-    scale=(8, 8),
-    position=(0, 0, 4),
-    rotation=(0, 180, 0),
-    texture=texture),
-  # Back face
-  Entity(model=create_plane(
-    texture_scale = (8, 8),
-    texture_position = (24, 8)),
-    scale=(8, 8),
-    position=(0, 0, -4),
-    rotation=(0, 0, 0),
-    texture=texture),
-  # Left face
-  Entity(model=create_plane(
-    texture_scale = (8, 8),
-    texture_position = (16, 8)),
-    scale=(8, 8),
-    position=(-4, 0, 0),
-    rotation=(0, 90, 0),
-    texture=texture),
-  # Right face
-  Entity(model=create_plane(
-    texture_scale = (8, 8),
-    texture_position = (0, 8)),
-    scale=(8, 8),
-    position=(4, 0, 0),
-    rotation=(0, -90, 0),
-    texture=texture),
-  # Top face
-  Entity(model=create_plane(
-    texture_scale = (8, 8),
-    texture_position = (8, 0)),
-    scale=(8, 8),
-    position=(0, 4, 0),
-    rotation=(90, 180, 0),
-    texture=texture),
-  # Bottom face
-  # FIXME: Bottom face UV is flipped on the X axis.
-  Entity(model=create_plane(
-    texture_scale = (8, 8),
-    texture_position = (16, 0)),
-    scale=(8, 8),
-    position=(0, -4, 0),
-    rotation=(-90, 0, 0),
-    texture=texture)
-]
-for planes in head:
-  planes.y += 10
-hat = [
-  # Front face
-  Entity(model=create_plane(
-    texture_scale = (8, 8),
-    texture_position = (32+8, 8)),
-    scale=(8.5, 8.5),
-    position=(0, 0, 4.25),
-    rotation=(0, 180, 0),
-    texture=texture),
-  # Back face
-  Entity(model=create_plane(
-    texture_scale = (8, 8),
-    texture_position = (32+24, 8)),
-    scale=(8.5, 8.5),
-    position=(0, 0, -4.25),
-    rotation=(0, 0, 0),
-    texture=texture),
-  # Left face
-  Entity(model=create_plane(
-    texture_scale = (8, 8),
-    texture_position = (32+16, 8)),
-    scale=(8.5, 8.5),
-    position=(-4.25, 0, 0),
-    rotation=(0, 90, 0),
-    texture=texture),
-  # Right face
-  Entity(model=create_plane(
-    texture_scale = (8, 8),
-    texture_position = (32+0, 8)),
-    scale=(8.5, 8.5),
-    position=(4.25, 0, 0),
-    rotation=(0, -90, 0),
-    texture=texture),
-  # Top face
-  Entity(model=create_plane(
-    texture_scale = (8, 8),
-    texture_position = (32+8, 0)),
-    scale=(8.5, 8.5),
-    position=(0, 4.25, 0),
-    rotation=(90, 180, 0),
-    texture=texture),
-  # Bottom face
-  # FIXME: Bottom face UV is flipped on the X axis.
-  Entity(model=create_plane(
-    texture_scale = (8, 8),
-    texture_position = (32+16, 0)),
-    scale=(8.5, 8.5),
-    position=(0, -4.25, 0),
-    rotation=(-90, 0, 0),
-    texture=texture)
-]
-for planes in hat:
-  planes.y += 10
-body = [
-  # Front face
-  Entity(model=create_plane(
-    texture_scale = (8, 12),
-    texture_position = (20, 20)),
-    scale=(8, 12),
-    position=(0, 0, 2),
-    rotation=(0, 180, 0),
-    texture=texture),
-  # Back face
-  Entity(model=create_plane(
-    texture_scale = (8, 12),
-    texture_position = (32, 20)),
-    scale=(8, 12),
-    position=(0, 0, -2),
-    rotation=(0, 0, 0),
-    texture=texture),
-  # Left face
-  Entity(model=create_plane(
-    texture_scale = (4, 12),
-    texture_position = (16, 20)),
-    scale=(4, 12),
-    position=(-4, 0, 0),
-    rotation=(0, 90, 0),
-    texture=texture),
-  # Right face
-  Entity(model=create_plane(
-    texture_scale = (4, 12),
-    texture_position = (28, 20)),
-    scale=(4, 12),
-    position=(4, 0, 0),
-    rotation=(0, -90, 0),
-    texture=texture),
-  # Top face
-  Entity(model=create_plane(
-    texture_scale = (8, 4),
-    texture_position = (20, 16)),
-    scale=(8, 4),
-    position=(0, 6, 0),
-    rotation=(90, 180, 0),
-    texture=texture),
-  # Bottom face
-  Entity(model=create_plane(
-    texture_scale = (8, 4),
-    texture_position = (28, 16)),
-    scale=(8, 4),
-    position=(0, -6, 0),
-    rotation=(-90, 0, 0),
-    texture=texture)
-]
-right_arm = [
-  # Front face
-  Entity(model=create_plane(
-    texture_scale = (4, 12),
-    texture_position = (44, 20)),
-    scale=(4, 12),
-    position=(0, 0, 2),
-    rotation=(0, 180, 0),
-    texture=texture),
-  # Back face
-  Entity(model=create_plane(
-    texture_scale = (4, 12),
-    texture_position = (52, 20)),
-    scale=(4, 12),
-    position=(0, 0, -2),
-    rotation=(0, 0, 0),
-    texture=texture),
-  # Left face
-  Entity(model=create_plane(
-    texture_scale = (4, 12),
-    texture_position = (48, 20)),
-    scale=(4, 12),
-    position=(-2, 0, 0),
-    rotation=(0, 90, 0),
-    texture=texture),
-  # Right face
-  Entity(model=create_plane(
-    texture_scale = (4, 12),
-    texture_position = (40, 20)),
-    scale=(4, 12),
-    position=(2, 0, 0),
-    rotation=(0, -90, 0),
-    texture=texture),
-  # Top face
-  Entity(model=create_plane(
-    texture_scale = (4, 4),
-    texture_position = (44, 16)),
-    scale=(4, 4),
-    position=(0, 6, 0),
-    rotation=(90, 180, 0),
-    texture=texture),
-  # Bottom face
-  Entity(model=create_plane(
-    texture_scale = (4, 4),
-    texture_position = (48, 16)),
-    scale=(4, 4),
-    position=(0, -6, 0),
-    rotation=(-90, 0, 0),
-    texture=texture)
-]
-for planes in right_arm:
-  planes.x += 6
-left_arm = [
-  # Front face became Back face now
-  Entity(model=create_plane(
-    texture_scale = (4, 12),
-    texture_position = (44, 20)),
-    scale=(4, 12),
-    position=(0, 0, -2),
-    rotation=(0, 0, 0),
-    texture=texture),
-  # Back face became Front face
-  Entity(model=create_plane(
-    texture_scale = (4, 12),
-    texture_position = (52, 20)),
-    scale=(4, 12),
-    position=(0, 0, 2),
-    rotation=(0, 180, 0),
-    texture=texture),
-  # Left face became right face
-  Entity(model=create_plane(
-    texture_scale = (4, 12),
-    texture_position = (48, 20)),
-    scale=(4, 12),
-    position=(2, 0, 0),
-    rotation=(0, -90, 0),
-    texture=texture),
-  # Right face became left face
-  Entity(model=create_plane(
-    texture_scale = (4, 12),
-    texture_position = (40, 20)),
-    scale=(4, 12),
-    position=(-2, 0, 0),
-    rotation=(0, 90, 0),
-    texture=texture),
-  # Top face
-  Entity(model=create_plane(
-    texture_scale = (4, 4),
-    texture_position = (44, 16)),
-    scale=(4, 4),
-    position=(0, 6, 0),
-    rotation=(90, 0, 0),
-    texture=texture),
-  # Bottom face
-  Entity(model=create_plane(
-    texture_scale = (4, 4),
-    texture_position = (48, 16)),
-    scale=(4, 4),
-    position=(0, -6, 0),
-    rotation=(-90, 0, 0),
-    texture=texture)
-]
-for planes in left_arm:
-  planes.x -= 6
-left_leg = [
-  # Front face
-  Entity(model=create_plane(
-    texture_scale = (4, 12),
-    texture_position = (4, 20)),
-    scale=(4, 12),
-    position=(0, 0, 2),
-    rotation=(0, 180, 0),
-    texture=texture),
-  # Back face
-  Entity(model=create_plane(
-    texture_scale = (4, 12),
-    texture_position = (12, 20)),
-    scale=(4, 12),
-    position=(0, 0, -2),
-    rotation=(0, 0, 0),
-    texture=texture),
-  # Left face
-  Entity(model=create_plane(
-    texture_scale = (4, 12),
-    texture_position = (8, 20)),
-    scale=(4, 12),
-    position=(-2, 0, 0),
-    rotation=(0, 90, 0),
-    texture=texture),
-  # Right face
-  Entity(model=create_plane(
-    texture_scale = (4, 12),
-    texture_position = (0, 20)),
-    scale=(4, 12),
-    position=(2, 0, 0),
-    rotation=(0, -90, 0),
-    texture=texture),
-  # Top face
-  Entity(model=create_plane(
-    texture_scale = (4, 4),
-    texture_position = (4, 16)),
-    scale=(4, 4),
-    position=(0, 6, 0),
-    rotation=(90, 180, 0),
-    texture=texture),
-  # Bottom face
-  Entity(model=create_plane(
-    texture_scale = (4, 4),
-    texture_position = (8, 16)),
-    scale=(4, 4),
-    position=(0, -6, 0),
-    rotation=(-90, 0, 0),
-    texture=texture)
-]
-for planes in left_leg:
-  planes.x -= 2
-  planes.y -= 12
-right_leg = [
-  # Front face
-  Entity(model=create_plane(
-    texture_scale = (4, 12),
-    texture_position = (4, 20)),
-    scale=(4, 12),
-    position=(0, 0, 2),
-    rotation=(0, 180, 0),
-    texture=texture),
-  # Back face
-  Entity(model=create_plane(
-    texture_scale = (4, 12),
-    texture_position = (12, 20)),
-    scale=(4, 12),
-    position=(0, 0, -2),
-    rotation=(0, 0, 0),
-    texture=texture),
-  # Left face
-  Entity(model=create_plane(
-    texture_scale = (4, 12),
-    texture_position = (8, 20)),
-    scale=(4, 12),
-    position=(-2, 0, 0),
-    rotation=(0, 90, 0),
-    texture=texture),
-  # Right face
-  Entity(model=create_plane(
-    texture_scale = (4, 12),
-    texture_position = (0, 20)),
-    scale=(4, 12),
-    position=(2, 0, 0),
-    rotation=(0, -90, 0),
-    texture=texture),
-  # Top face
-  Entity(model=create_plane(
-    texture_scale = (4, 4),
-    texture_position = (4, 16)),
-    scale=(4, 4),
-    position=(0, 6, 0),
-    rotation=(90, 180, 0),
-    texture=texture),
-  # Bottom face
-  Entity(model=create_plane(
-    texture_scale = (4, 4),
-    texture_position = (8, 16)),
-    scale=(4, 4),
-    position=(0, -6, 0),
-    rotation=(-90, 0, 0),
-    texture=texture)
-]
-for planes in right_leg:
-  planes.x += 2
-  planes.y -= 12
+for body_group in steve_texture_map.steve_uv_data:
+  isOuterFace = True if body_group == 'hat' or body_group == 'coat' or body_group == 'left_sleeve' or body_group == 'right_sleeve' or body_group == 'left_pants_leg' or body_group == 'right_pants_leg' else False
+  for face in steve_texture_map.steve_uv_data[body_group]:
+    steve_texture_map.steve_uv_data[body_group][face]['mesh'] = Entity(
+      model=create_plane(steve_texture_map.steve_uv_data[body_group][face]['pixel_size'], steve_texture_map.steve_uv_data[body_group][face]['start_pixel']),
+      texture=texture,
+      scale=(
+        steve_texture_map.steve_uv_data[body_group][face]['pixel_size'][0] * (1.0625 if isOuterFace else 1),
+        steve_texture_map.steve_uv_data[body_group][face]['pixel_size'][1] * (1.0625 if isOuterFace else 1)
+      ),
+      position=(
+        # X relative to the front face
+        -steve_texture_map.steve_uv_data[body_group]['front']['pixel_size'][0]/2 * (1.0625 if isOuterFace else 1) if face == 'left' else steve_texture_map.steve_uv_data[body_group]['front']['pixel_size'][0]/2 * (1.0625 if isOuterFace else 1) if face == 'right' else 0,
+        # Y relative to the front face
+        steve_texture_map.steve_uv_data[body_group]['front']['pixel_size'][1]/2 * (1.0625 if isOuterFace else 1) if face == 'top' else -steve_texture_map.steve_uv_data[body_group]['front']['pixel_size'][1]/2 * (1.0625 if isOuterFace else 1) if face == 'bottom' else 0,
+        # Z relative to the left face
+        steve_texture_map.steve_uv_data[body_group]['left']['pixel_size'][0]/2 * (1.0625 if isOuterFace else 1) if face == 'front' else -steve_texture_map.steve_uv_data[body_group]['left']['pixel_size'][0]/2 * (1.0625 if isOuterFace else 1) if face == 'back' else 0
+        ),
+      rotation=(
+        90 if face == 'top' else -90 if face == 'bottom' else 0,
+        180 if face == 'front' else 90 if face == 'left' else -90 if face == 'right' else 0,
+        180 if face == 'top' or face == 'bottom' else 0
+      )
+    )
+  # Move the head group up by 10 units.
+  if body_group == 'head' or body_group == 'hat':
+    for face in steve_texture_map.steve_uv_data[body_group]:
+      steve_texture_map.steve_uv_data[body_group][face]['mesh'].y += 10
+  if body_group == 'left_arm' or body_group == 'left_sleeve':
+    for face in steve_texture_map.steve_uv_data[body_group]:
+      steve_texture_map.steve_uv_data[body_group][face]['mesh'].x -= (steve_texture_map.steve_uv_data['body']['front']['pixel_size'][0] + steve_texture_map.steve_uv_data['left_arm']['front']['pixel_size'][0])/2
+  if body_group == 'right_arm' or body_group == 'right_sleeve':
+    for face in steve_texture_map.steve_uv_data[body_group]:
+      steve_texture_map.steve_uv_data[body_group][face]['mesh'].x += (steve_texture_map.steve_uv_data['body']['front']['pixel_size'][0] + steve_texture_map.steve_uv_data['left_arm']['front']['pixel_size'][0])/2
+  if body_group == 'left_leg' or body_group == 'left_pants_leg':
+    for face in steve_texture_map.steve_uv_data[body_group]:
+      steve_texture_map.steve_uv_data[body_group][face]['mesh'].x += 2
+      steve_texture_map.steve_uv_data[body_group][face]['mesh'].y -= 12
+  if body_group == 'right_leg' or body_group == 'right_pants_leg':
+    for face in steve_texture_map.steve_uv_data[body_group]:
+      steve_texture_map.steve_uv_data[body_group][face]['mesh'].x -= 2
+      steve_texture_map.steve_uv_data[body_group][face]['mesh'].y -= 12

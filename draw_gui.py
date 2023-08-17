@@ -6,9 +6,9 @@ from draw_crafter import *
 
 # Create a UI element that sits on the right of the screen.
 def reapply_texture():
-  for body_group in [head, hat, body, left_arm, right_arm, left_leg, right_leg]:
-    for face in body_group:
-      face.texture = texture
+  for body_group in steve_texture_map.steve_uv_data:
+    for face in steve_texture_map.steve_uv_data[body_group]:
+      steve_texture_map.steve_uv_data[body_group][face]['mesh'].texture = texture
 def create_right_panel():
   panel = Entity(parent=camera.ui, model='quad', texture='', scale=(0.35, 1), x=0.72, y=0, origin=(0, 0), color=color.gray)
   return panel
