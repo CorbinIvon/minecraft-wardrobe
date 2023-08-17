@@ -1,5 +1,7 @@
 from ursina import *
 
+# Map easier with this: https://pixspy.com/
+
 texture_index = 0
 textures = ['resources/steve_template']
 texture = textures[texture_index]

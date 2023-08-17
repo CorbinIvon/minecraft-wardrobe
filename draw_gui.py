@@ -5,6 +5,10 @@ app = Ursina()
 from draw_crafter import *
 
 # Create a UI element that sits on the right of the screen.
+def reapply_texture():
+  for body_group in [head, hat, body, left_arm, right_arm, left_leg, right_leg]:
+    for face in body_group:
+      face.texture = texture
 def create_right_panel():
   panel = Entity(parent=camera.ui, model='quad', texture='', scale=(0.35, 1), x=0.72, y=0, origin=(0, 0), color=color.gray)
   return panel
@@ -19,18 +23,7 @@ def switch_texture():
     texture_index = 0
   # Set texture to the texture at the index of texture_index in the textures list
   texture = textures[texture_index]
-  for face in head:
-    face.texture = texture
-  for face in body:
-    face.texture = texture
-  for face in left_arm:
-    face.texture = texture
-  for face in right_arm:
-    face.texture = texture
-  for face in left_leg:
-    face.texture = texture
-  for face in right_leg:
-    face.texture = texture
+  reapply_texture()
 header = Text(text='Minecraft\nWardrobe', color=color.white, scale=(7, 3) , x=0, y=0.4, parent=right_panel, origin=(0, 0))
 button = Button(text='Switch Texture', color=color.azure, scale=(0.75, 0.05), x=0, y=0.3, parent=right_panel, origin=(0, 0.5), on_click=switch_texture)
 controls = Text(text='Right click = Rotate | Middle Mouse = Pan | Scroll = Zoom', color=color.white, scale=(0.75, 0.75), x=-0.6, y=-0.45, origin=(0, 0.5))
