@@ -4,16 +4,11 @@ import os
 app = Ursina()
 from draw_crafter import *
 
-# Position the camera
 editor_camera = EditorCamera()
 editor_camera.rotation = (0, 180, 0)  # Rotate the camera 180 degrees around the Y-axis
-
-# Disable FPS Counter
 window.fps_counter.enabled = False
 window.size = (1280, 720)
 
-
-# Create a UI element that sits on the right of the screen.
 def reapply_texture():
   for body_group in steve_texture_map.steve_uv_data:
     for face in steve_texture_map.steve_uv_data[body_group]:
@@ -81,9 +76,8 @@ def import_texture():
 textControlsHints = Text(text='Right click = Rotate | Middle Mouse = Pan | Scroll = Zoom', color=color.white, scale=(0.75, 0.75), x=-0.6, y=-0.45, origin=(0, 0.5))
 rightBackgroundPanel = Entity(parent=camera.ui, model='quad', texture='', scale=(0.35, 1), x=0.72, y=0, origin=(0, 0), color=color.gray)
 appTitle = Text(parent=rightBackgroundPanel, text='Minecraft\nWardrobe', color=color.white, scale=(7, 3) , x=0, y=0.4, origin=(0, 0))
-# buttonSwitchTexture = Button(parent=camera.ui, text='Switch Texture', color=color.azure, scale=(0.75, 0.05), x=0, y=0.3, origin=(0, 0.5), on_click=switch_texture)
-# buttonImportTexture = Button(parent=camera.ui, text='Import Texture', color=color.azure, scale=(0.75, 0.05), x=0, y=0.2, origin=(0, 0.5), on_click=import_texture)
 
+# Body Group Toggle Buttons
 buttonXOffsetInPixels = 520
 buttonYOffsetInPixels = -150
 buttonScaleMultiplier = 8
@@ -137,8 +131,4 @@ buttonToggleRightLeg = Button(
   on_click=lambda: toggle_body_group('left_leg,left_pants_leg', buttonToggleRightLeg)
 )
 
-# Create the skin control buttons. These buttons will represent the Minecraft character with 2 buttons side by side that enable / disable the outer layer and inner layer.
-
-
-# Run the application
 app.run()
