@@ -61,11 +61,11 @@ steve_uv_data = {
       'pixel_size': (8, 12)
     },
     'left': {
-      'start_pixel': (16, 20),
+      'start_pixel': (28, 20),
       'pixel_size': (4, 12)
     },
     'right': {
-      'start_pixel': (28, 20),
+      'start_pixel': (16, 20),
       'pixel_size': (4, 12)
     },
     'top': {
@@ -87,11 +87,11 @@ steve_uv_data = {
       'pixel_size': (8, 12)
     },
     'left': {
-      'start_pixel': (16, 36),
+      'start_pixel': (28, 36),
       'pixel_size': (4, 12)
     },
     'right': {
-      'start_pixel': (28, 36),
+      'start_pixel': (16, 36),
       'pixel_size': (4, 12)
     },
     'top': {
